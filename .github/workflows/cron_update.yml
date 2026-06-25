@@ -1,42 +1,46 @@
-name: Automatyczny Bot Aktualizacji Stopki
+name: Update Activity Feed
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Odpalaj równo co godzinę
-  workflow_dispatch:      # Pozwala też odpalić bota ręcznie z zakładki "Actions"
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 permissions:
-  contents: write # Daje botowi prawo do zapisu na branchu www
+  contents: write
+
+concurrency:
+  group: activity-feed
+  cancel-in-progress: true
 
 jobs:
-  update-footer:
+  update:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Pobierz repozytorium z gałęzi www
+      - name: Checkout www branch
         uses: actions/checkout@v4
         with:
-          ref: www # <--- KLUCZOWE: Wskazanie Twojej gałęzi ze stroną
+          ref: www
 
-      - name: Konfiguracja Pythona
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
-      - name: Uruchom skrypt bota
+      - name: Run generator
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python update_activity.py
 
-      - name: Commit i Push zmian na branch www
+      - name: Commit changes
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Sprawdź czy zaszły jakieś zmiany w index.html
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
           if ! git diff --exit-code index.html; then
             git add index.html
-            git commit -m "chore: automated footer activity sync [skip ci]"
-            git push origin www # <--- Pchamy bezpośrednio na branch www
+            git commit -m "chore: update activity feed [skip ci]"
+            git push origin www
           else
-            echo "Brak nowych aktywności, index.html jest aktualny."
+            echo "No changes → exit"
           fi
