@@ -1,5 +1,6 @@
 # bing-glava-suite-www
 Multi-instance GLava audio visualization suite for Linux. Run Bars, Wave, Circle, Graph, and Radial simultaneously — each isolated, each yours. Born from a single-file script, built for everyone.
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](LICENSE)
 [![Platform: Linux](https://img.shields.io/badge/Platform-Linux-blue?logo=linux&logoColor=white&style=flat)](https://github.com/Krzysztofci/bing-glava-suite)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white&style=flat)](https://www.python.org/)
