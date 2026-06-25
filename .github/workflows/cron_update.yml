@@ -20,7 +20,7 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v4
         with:
-          ref: www
+          ref: main
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -40,7 +40,7 @@ jobs:
           if ! git diff --exit-code index.html; then
             git add index.html
             git commit -m "chore: update activity feed [skip ci]"
-            git push origin www
+            git push origin main
           else
             echo "No changes → exit"
           fi
