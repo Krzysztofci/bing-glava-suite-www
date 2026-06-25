@@ -8,3 +8,4 @@ Multi-instance GLava audio visualization suite for Linux. Run Bars, Wave, Circle
 [![Made for GLava](https://img.shields.io/badge/Made%20for-GLava-purple?style=flat)](https://github.com/jarcode-foss/glava)
 [![Tests](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/krzysztofci/9856a14679a9ed03f71d4025d57f16e0/raw/tests.json&logo=github&style=flat)](https://github.com/Krzysztofci/bing-glava-suite/actions/workflows/test.yml)
 [![Coverage](https://codecov.io/gh/krzysztofci/bing-glava-suite/branch/dev/graph/badge.svg)](https://github.com/Krzysztofci/bing-glava-suite)
+[![Update Activity Feed](https://github.com/Krzysztofci/bing-glava-suite-www/actions/workflows/cron_update.yml/badge.svg)](https://github.com/Krzysztofci/bing-glava-suite-www/actions/workflows/cron_update.yml)
