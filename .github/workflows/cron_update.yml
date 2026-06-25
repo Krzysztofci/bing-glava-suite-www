@@ -20,7 +20,7 @@ jobs:
       - name: Checkout www branch
         uses: actions/checkout@v4
         with:
-          ref: www
+          ref: main
 
       - name: Setup Python
         uses: actions/setup-python@v5
